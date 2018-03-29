@@ -84,7 +84,7 @@ class Alarm : BroadcastReceiver() {
         val am = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val i = Intent(context, Alarm::class.java)
         val pi = PendingIntent.getBroadcast(context, 0, i, 0)
-        am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), (1000 * 6).toLong(), pi) // Millisec * Second * Minute
+        am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), (1000 * 60 * 10).toLong(), pi) // Millisec * Second * Minute
     }
 
     fun cancelAlarm(context: Context) {

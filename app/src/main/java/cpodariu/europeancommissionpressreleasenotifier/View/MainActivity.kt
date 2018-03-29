@@ -45,6 +45,10 @@ class MainActivity : AppCompatActivity() {
 
         toolbar.title = "Press Release Notifications"
 
+//        database.use { update("KeyWord", "lastID" to "MEMO/18/2601")
+//                .whereSimple("_id = ?", "1")
+//                .exec()  }
+
         keyWordsList.adapter = KeyWordsAdapter(keyWordsArrayList, this)
 
         updateKeyWordList()
