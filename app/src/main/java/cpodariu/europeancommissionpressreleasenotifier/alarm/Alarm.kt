@@ -27,7 +27,7 @@ import kotlin.math.log
 
 
 class Alarm : BroadcastReceiver() {
-    @SuppressLint("InvalidWakeLockTag")
+    @SuppressLint("InvalidWakeLockTag", "UnsafeProtectedBroadcastReceiver")
     override fun onReceive(context: Context, intent: Intent) {
         val pm = context.getSystemService(Context.POWER_SERVICE) as PowerManager
         val wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "")
@@ -35,8 +35,13 @@ class Alarm : BroadcastReceiver() {
 
         doAsync {
             sendNotifications(context)
+
+        if (intent.action != null)
+            if (intent.action.contains("BOOT_COMPLETED"))
+                setAlarm(context)
         }
         wl.release()
+
         Log.e("wakelog ahaha", "released")
     }
 
@@ -48,7 +53,7 @@ class Alarm : BroadcastReceiver() {
             querryResult = select("KeyWord").parseList(rowParser)
         }
         for (i in querryResult) {
-            val articles = Article.getAllArticles(i.word)
+            val articles = Article.getAllArticles(i.word.replace(" ", "+"))
 
             if (articles.size == 0)
                 return
@@ -79,7 +84,7 @@ class Alarm : BroadcastReceiver() {
         val am = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val i = Intent(context, Alarm::class.java)
         val pi = PendingIntent.getBroadcast(context, 0, i, 0)
-        am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), (1000 * 10).toLong(), pi) // Millisec * Second * Minute
+        am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), (1000 * 6).toLong(), pi) // Millisec * Second * Minute
     }
 
     fun cancelAlarm(context: Context) {

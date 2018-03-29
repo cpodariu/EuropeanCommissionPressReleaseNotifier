@@ -43,15 +43,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         keyWordsList.layoutManager = LinearLayoutManager(this)
 
-        database.use {
-            update("KeyWord", "lastID" to "SPEECH/18/2681")
-                    .whereSimple("_id = ?", "1")
-                    .exec()
-        }
-
         toolbar.title = "Press Release Notifications"
 
-        keyWordsList.adapter = KeyWordsAdapter(keyWordsArrayList)
+        keyWordsList.adapter = KeyWordsAdapter(keyWordsArrayList, this)
 
         updateKeyWordList()
 
