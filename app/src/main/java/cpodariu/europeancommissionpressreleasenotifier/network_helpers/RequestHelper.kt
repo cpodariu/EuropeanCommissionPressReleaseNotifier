@@ -8,7 +8,7 @@ import java.net.URL
  */
 
 object RequestHelper{
-    final val URL_START = "http://europa.eu/rapid/search-result.htm?quickSearch=1&text="
+    final val URL_START = "http://europa.eu/rapid/search-result.htm?dateRange=1d&quickSearch=1&text="
     final val URL_END = "&format=XML&page=1"
 
     fun getUrlForString(s : String) : String{

@@ -36,9 +36,9 @@ class Alarm : BroadcastReceiver() {
         doAsync {
             sendNotifications(context)
 
-        if (intent.action != null)
-            if (intent.action.contains("BOOT_COMPLETED"))
-                setAlarm(context)
+            if (intent.action != null)
+                if (intent.action.contains("BOOT_COMPLETED"))
+                    setAlarm(context)
         }
         wl.release()
 
@@ -46,7 +46,7 @@ class Alarm : BroadcastReceiver() {
     }
 
     fun sendNotifications(context: Context) {
-        Log.e("CoolAlarm: ","sendNotifications called")
+        Log.e("CoolAlarm: ", "sendNotifications called")
         val rowParser = classParser<KeyWord>()
         lateinit var querryResult: List<KeyWord>
         context.database.use {
@@ -55,25 +55,26 @@ class Alarm : BroadcastReceiver() {
         for (i in querryResult) {
             val articles = Article.getAllArticles(i.word.replace(" ", "+"))
 
-            if (articles.size == 0)
-                return
+            if (articles.size != 0) {
 
-            if (i.lastId == "") {
-                context.database.use {
-                    update("KeyWord", "lastID" to articles[0].id)
-                            .whereSimple("_id = ?", i.id.toString())
-                            .exec()
-                }
-            } else {
-                var j = 0
-                while (articles[j].id != i.lastId && j < articles.size){
-                    NotificationHelper(context).sendNotification(articles[j])
-                    j ++
-                }
-                context.database.use {
-                    update("KeyWord", "lastID" to articles[0].id)
-                            .whereSimple("_id = ?", i.id.toString())
-                            .exec()
+
+                if (i.lastId == "") {
+                    context.database.use {
+                        update("KeyWord", "lastID" to articles[0].id)
+                                .whereSimple("_id = ?", i.id.toString())
+                                .exec()
+                    }
+                } else {
+                    var j = 0
+                    while (j < articles.size && articles[j].id != i.lastId) {
+                        NotificationHelper(context).sendNotification(articles[j])
+                        j++
+                    }
+                    context.database.use {
+                        update("KeyWord", "lastID" to articles[0].id)
+                                .whereSimple("_id = ?", i.id.toString())
+                                .exec()
+                    }
                 }
             }
         }
@@ -84,7 +85,7 @@ class Alarm : BroadcastReceiver() {
         val am = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val i = Intent(context, Alarm::class.java)
         val pi = PendingIntent.getBroadcast(context, 0, i, 0)
-        am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), (1000 * 60 * 10).toLong(), pi) // Millisec * Second * Minute
+        am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), (1000 * 60 * 15).toLong(), pi) // Millisec * Second * Minute
     }
 
     fun cancelAlarm(context: Context) {

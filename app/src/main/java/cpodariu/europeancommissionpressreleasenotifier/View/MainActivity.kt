@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         keyWordsList.layoutManager = LinearLayoutManager(this)
 
         toolbar.title = "Press Release Notifications"
-
 //        database.use { update("KeyWord", "lastID" to "MEMO/18/2601")
 //                .whereSimple("_id = ?", "1")
 //                .exec()  }
@@ -55,9 +54,9 @@ class MainActivity : AppCompatActivity() {
 
         fab.onClick {
             alert {
-                title = "Alert"
+                title = "New keywords:"
                 lateinit var et: EditText
-                positiveButton("Cool") {
+                positiveButton("Add") {
                     doAsync {
                         database.use { insert("KeyWord", "word" to et.text.toString(), "lastId" to "") }
                         updateKeyWordList()

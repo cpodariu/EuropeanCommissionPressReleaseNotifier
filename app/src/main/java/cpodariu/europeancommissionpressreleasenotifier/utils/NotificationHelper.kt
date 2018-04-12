@@ -10,13 +10,11 @@ import cpodariu.europeancommissionpressreleasenotifier.R
 import android.os.Build
 import android.provider.Settings.Global.getString
 import android.support.v4.app.NotificationCompat
-import android.support.v4.app.NotificationManagerCompat
 import cpodariu.europeancommissionpressreleasenotifier.model.Article
 import android.content.Intent
 import android.net.Uri
 import android.app.PendingIntent
-
-
+import android.support.v4.app.NotificationManagerCompat
 
 
 class NotificationHelper(val ctx: Context) {
@@ -34,11 +32,11 @@ class NotificationHelper(val ctx: Context) {
             // the NotificationChannel class is new and not in the support library
             val name = ctx.getString(R.string.channel_name)
             val description = ctx.getString(R.string.channel_description)
-            val importance = NotificationManagerCompat.IMPORTANCE_LOW
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID, name, importance)
             channel.description = description
             // Register the channel with the system
-            val notificationManager = NotificationManagerCompat.from(ctx) as NotificationManager
+            val notificationManager = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
 
