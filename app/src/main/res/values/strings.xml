@@ -4,4 +4,5 @@
     <string name="channel_name">EuropeanComissionNotificationChanel</string>
     <string name="channel_description">Channel for sending new european press releases notifications</string>
     <string name="delete_button">Delete button</string>
+    <string name="add_alert_message">Enter all the words that the press release should contain separated by a space.</string>
 </resources>

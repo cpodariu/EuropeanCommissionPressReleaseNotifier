@@ -14,7 +14,7 @@ class Article(xmlString: String) {
     companion object {
         fun getAllArticles(key: String): ArrayList<Article> {
             val xmlResponse = RequestHelper.makeRequest(key)
-            Log.d(key, xmlResponse)
+//            Log.d(key, xmlResponse)
             val articleList: ArrayList<Article> = ArrayList()
             if (xmlResponse.contains("<PressRelease>")) {
                 for (i in xmlResponse.split("</PressRelease><PressRelease>")) {

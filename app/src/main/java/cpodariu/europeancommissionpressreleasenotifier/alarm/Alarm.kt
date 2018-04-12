@@ -42,11 +42,11 @@ class Alarm : BroadcastReceiver() {
         }
         wl.release()
 
-        Log.e("wakelog ahaha", "released")
+//        Log.e("wakelog ahaha", "released")
     }
 
     fun sendNotifications(context: Context) {
-        Log.e("CoolAlarm: ", "sendNotifications called")
+//        Log.e("CoolAlarm: ", "sendNotifications called")
         val rowParser = classParser<KeyWord>()
         lateinit var querryResult: List<KeyWord>
         context.database.use {
@@ -81,7 +81,7 @@ class Alarm : BroadcastReceiver() {
     }
 
     fun setAlarm(context: Context) {
-        Log.e("Alarm", "setAlarm called")
+//        Log.e("Alarm", "setAlarm called")
         val am = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val i = Intent(context, Alarm::class.java)
         val pi = PendingIntent.getBroadcast(context, 0, i, 0)

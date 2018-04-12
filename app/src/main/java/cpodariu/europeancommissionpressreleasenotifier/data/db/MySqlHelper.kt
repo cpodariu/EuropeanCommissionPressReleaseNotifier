@@ -34,7 +34,7 @@ class MySqlHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "PressReleaseData
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        Log.e(this.javaClass.simpleName + ": ", "Database upgraded from " + oldVersion.toString() + " to " + newVersion.toString());
+//        Log.e(this.javaClass.simpleName + ": ", "Database upgraded from " + oldVersion.toString() + " to " + newVersion.toString());
         db.dropTable("KeyWord")
         onCreate(db)
     }

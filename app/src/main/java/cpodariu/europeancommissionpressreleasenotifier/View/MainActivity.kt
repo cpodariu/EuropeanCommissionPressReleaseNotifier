@@ -6,9 +6,6 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
-import android.view.View
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import cpodariu.europeancommissionpressreleasenotifier.R
 import cpodariu.europeancommissionpressreleasenotifier.model.KeyWord
@@ -17,11 +14,12 @@ import org.jetbrains.anko.sdk25.coroutines.onClick
 import android.text.Editable
 import android.widget.EditText
 import android.content.DialogInterface
+import android.opengl.Visibility
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AlertDialog
 import android.text.Layout
 import android.util.Log
-import android.view.Gravity
+import android.view.*
 import android.widget.LinearLayout
 import cpodariu.europeancommissionpressreleasenotifier.alarm.Alarm
 import cpodariu.europeancommissionpressreleasenotifier.data.db.database
@@ -29,6 +27,7 @@ import cpodariu.europeancommissionpressreleasenotifier.network_helpers.RequestHe
 import cpodariu.europeancommissionpressreleasenotifier.utils.NotificationHelper
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.*
+import org.jetbrains.anko.custom.ankoView
 import org.jetbrains.anko.db.*
 import java.security.Key
 import kotlin.properties.Delegates
@@ -64,10 +63,21 @@ class MainActivity : AppCompatActivity() {
                 }
                 customView {
                     linearLayout {
-                        et = editText()
-                        et.hint = "Add keyword here"
+                        orientation = LinearLayout.VERTICAL
                         padding = dip(16)
-                        gravity = Gravity.CENTER
+                        linearLayout {
+                            padding = dip(16)
+                            val tv = textView()
+                            tv.text = context.getString(R.string.add_alert_message)
+                            tv.textSize = 16f
+                        }
+                        linearLayout {
+                            et = editText()
+                            et.height = dip(64)
+                            padding = dip(0)
+                            et.hint = "Add keyword here"
+                            gravity = Gravity.CENTER
+                        }
                     }
                 }
             }.show()
