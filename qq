@@ -1,0 +1,91 @@
+[33mcommit 79d0332a30ade136420f2e55ad1e83579e235f2b[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: b19b8c2 0a543ae
+Author: Podariu Cătălin <podariucatalin97@gmail.com>
+Date:   Sat Nov 17 17:11:11 2018 +0200
+
+    Merge branch 'master' of https://github.com/cpodariu/EuropeanCommissionPressReleaseNotifier
+
+[33mcommit b19b8c28656c343805e2d9147960ebb48a8adfe7[m
+Author: Podariu Cătălin <podariucatalin97@gmail.com>
+Date:   Sat Nov 17 17:11:11 2018 +0200
+
+    asd
+
+[33mcommit 0a543ae7f5c62f75db8d6c85d2f8f075c2ad888b[m
+Author: Podariu Cătălin <podariucatalin97@gmail.com>
+Date:   Sun Nov 18 23:43:09 2018 +0200
+
+    asd
+
+[33mcommit dfe3874328b946e5d9ed9514da7297d1d181c45d[m
+Author: cpodariu <podariucatalin97@gmail.com>
+Date:   Tue May 22 23:40:45 2018 +0300
+
+    multiple notifications bug almost solved
+
+[33mcommit ba1ee164cc0ecfd5e702424a46df4d1e8247f32f[m
+Author: cpodariu <podariucatalin97@gmail.com>
+Date:   Mon Apr 16 21:38:04 2018 +0300
+
+    merged
+
+[33mcommit c5a6629f94031c1783592b1856084481fca07619[m
+Merge: b7b4af5 d60021b
+Author: cpodariu <podariucatalin97@gmail.com>
+Date:   Mon Apr 16 21:37:25 2018 +0300
+
+    Merge branch 'release'
+
+[33mcommit b7b4af52207dea5f5179185b636bb58c9e28c085[m
+Author: cpodariu <podariucatalin97@gmail.com>
+Date:   Thu Apr 12 23:25:41 2018 +0300
+
+    Squashed commit of the following:
+    
+    commit d60021bd3818e4270a3ce32c37ae4464398a826d
+    Author: cpodariu <podariucatalin97@gmail.com>
+    Date:   Thu Apr 12 22:29:08 2018 +0300
+    
+        Ready for release
+    
+    commit d9e86c9f69d41c7dc8d5ba505fcaed7728d72a02
+    Author: cpodariu <podariucatalin97@gmail.com>
+    Date:   Thu Apr 12 22:28:05 2018 +0300
+    
+        Ready for release
+
+[33mcommit d60021bd3818e4270a3ce32c37ae4464398a826d[m[33m ([m[1;31morigin/release[m[33m)[m
+Author: cpodariu <podariucatalin97@gmail.com>
+Date:   Thu Apr 12 22:29:08 2018 +0300
+
+    Ready for release
+
+[33mcommit d9e86c9f69d41c7dc8d5ba505fcaed7728d72a02[m
+Author: cpodariu <podariucatalin97@gmail.com>
+Date:   Thu Apr 12 22:28:05 2018 +0300
+
+    Ready for release
+
+[33mcommit 7045083fabcbe09c9f7c4e0271c0dd4e8177cfa3[m
+Author: cpodariu <podariucatalin97@gmail.com>
+Date:   Thu Apr 12 14:08:04 2018 +0300
+
+    Ready for release
+
+[33mcommit b4d4490cf149b6539f8cf5db8821aaee37c998ae[m
+Author: cpodariu <podariucatalin97@gmail.com>
+Date:   Thu Mar 29 23:41:43 2018 +0300
+
+    Functionality seems to be done v2
+
+[33mcommit 5b7bfc44f5ef8bc7b1cb1d22bb5c77f7849ae479[m
+Author: cpodariu <podariucatalin97@gmail.com>
+Date:   Thu Mar 29 23:31:12 2018 +0300
+
+    Functionality seems to be done
+
+[33mcommit b80dab5ed811533fca21b6ca7376f7d3b2a863fd[m
+Author: cpodariu <podariucatalin97@gmail.com>
+Date:   Thu Mar 29 19:00:26 2018 +0300
+
+    initial commit

@@ -4,17 +4,16 @@ import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import android.content.Context.NOTIFICATION_SERVICE
-import android.view.View
 import cpodariu.europeancommissionpressreleasenotifier.R
 import android.os.Build
-import android.provider.Settings.Global.getString
 import android.support.v4.app.NotificationCompat
 import cpodariu.europeancommissionpressreleasenotifier.model.Article
 import android.content.Intent
 import android.net.Uri
 import android.app.PendingIntent
 import android.support.v4.app.NotificationManagerCompat
+import cpodariu.europeancommissionpressreleasenotifier.data.db.database
+import org.jetbrains.anko.db.*
 
 
 class NotificationHelper(val ctx: Context) {
@@ -26,6 +25,9 @@ class NotificationHelper(val ctx: Context) {
 
     @SuppressLint("WrongConstant")
     fun sendNotification(article: Article) {
+        if (checkIfArticleSent(article))
+            return
+        else
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create the NotificationChannel, but only on API 26+ because
@@ -59,4 +61,27 @@ class NotificationHelper(val ctx: Context) {
 
     }
 
+    fun checkIfArticleSent(a: Article): Boolean {
+        val id = a.id
+        var result = true
+        ctx.database.use {
+            val rowParser = StringParser
+
+            ctx.database.use {
+                val querryResult = select("SentNotifications", "_id").parseList(rowParser)
+                if (querryResult.isEmpty())
+                    result = false
+            }
+        }
+        return result
+    }
+
+    fun saveArticle(a:Article){
+        val id = a.id
+        ctx.database.use{
+            ctx.database.use{
+                insert("SentNotifications", "_id" to id)
+            }
+        }
+    }
 }

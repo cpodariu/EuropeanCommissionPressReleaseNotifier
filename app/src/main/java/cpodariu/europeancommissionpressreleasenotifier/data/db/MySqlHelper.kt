@@ -13,7 +13,7 @@ import kotlin.math.log
 class MySqlHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "PressReleaseDatabase", null, MySqlHelper.DB_VERSION) {
 
     companion object {
-        val DB_VERSION = 3
+        val DB_VERSION = 4
 
         private var instance: MySqlHelper? = null
 
@@ -35,8 +35,14 @@ class MySqlHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "PressReleaseData
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
 //        Log.e(this.javaClass.simpleName + ": ", "Database upgraded from " + oldVersion.toString() + " to " + newVersion.toString());
-        db.dropTable("KeyWord")
-        onCreate(db)
+//        db.dropTable("KeyWord")
+//        onCreate(db)
+        if (oldVersion < 4)
+        {
+            Log.i(MySqlHelper.javaClass.name, "database upgraded to version 4")
+            db.createTable("SentNotifications", true,
+                    "_id" to TEXT + UNIQUE)
+        }
     }
 
 }
